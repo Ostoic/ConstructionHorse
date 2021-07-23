@@ -184,7 +184,7 @@ function ConstructionHorse.select.current()
 end
 
 function ConstructionHorse.select.attach()
-	print('[ConstructionHorse.select.attach] Error, no nearby objects. Try running ConstructionHorse.select.nearby(10) first')
+	print('[ConstructionHorse.select.attach] Error, no nearby objects. Try running ConstructionHorse.flash_nearby(10) first')
 	if #ConstructionHorse.nearby == 0 then
 		return
 	end
@@ -209,17 +209,20 @@ function ConstructionHorse.select.next()
    ConstructionHorse.select.current()
 end
 
-function ConstructionHorse.select.nearby(radius)
+function ConstructionHorse.flash_nearby(radius)
    ConstructionHorse.nearby = {}
    
    if radius == nil then radius = 10 end
    now = time()
    
+   -- Rate limit to 0.1 Hz
    if now - last_nearby_lookup > 0.1 then
       last_nearby_lookup = now
       ConstructionHorse.command('.gobject near %d', radius)
    end
    
+   -- Wait for server command to run and return the result in a chat message to the client
+   -- async would be nice here
    on_nearby_end = function()
       for _, obj in ipairs(ConstructionHorse.nearby) do
          obj:flash()
