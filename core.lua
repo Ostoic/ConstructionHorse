@@ -183,9 +183,9 @@ function ConstructionHorse.select.current()
    obj:flash()
 end
 
-function ConstructionHorse.select.attach(radius)
-	print('[ConstructionHorse.select.attach(radius)] Error, no nearby objects. Try running ConstructionHorse.select.nearby(10) first')
-	if radius == nil or #ConstructionHorse.nearby == 0 then
+function ConstructionHorse.select.attach()
+	print('[ConstructionHorse.select.attach] Error, no nearby objects. Try running ConstructionHorse.select.nearby(10) first')
+	if #ConstructionHorse.nearby == 0 then
 		return
 	end
 	
