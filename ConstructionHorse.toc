@@ -1,0 +1,8 @@
+## Interface: 30300
+## Version: v1.0
+## Title: ConstructionHorse
+## Author: Act/Horsemology@Warmane
+## Notes: A GM helper addon for building things with game objects
+## Version: 1.0
+
+core.lua
