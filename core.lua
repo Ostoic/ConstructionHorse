@@ -67,17 +67,8 @@ function ConstructionHorse.obj:activate(value)
    ConstructionHorse.command('.gobject activate %d %d', self.guid, value)
 end
 
-function ConstructionHorse.obj:move_right(amount)
-   self.x = self.x + amount
-   self:move(self.x, self.y, self.z)
-end
-
-function ConstructionHorse.obj:move_left(amount)
-   return self:move_right(-amount)
-end
-
 function ConstructionHorse.obj:move_up(amount)
-   self.y = self.y + amount
+   self.z = self.z + amount
    self:move(self.x, self.y, self.z)
 end
 
@@ -177,7 +168,7 @@ end
 function ConstructionHorse.select.current()   
    readjust_selection()
    local obj = ConstructionHorse.objects[ConstructionHorse.select.i]
-   if obj == nil then print('nil') return end
+   if obj == nil then print('[ConstructionHorse.select.current] No selected object') return end
    
    ConstructionHorse.selection = obj
    obj:flash()
