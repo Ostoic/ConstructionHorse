@@ -146,13 +146,13 @@ function ConstructionHorse.add(obj)
    end
 end
 
-function ConstructionHorse.clear()
+function ConstructionHorse.delete_all()
    for _, v in ipairs(ConstructionHorse.objects) do
       v:delete()
    end
 end
 
-function ConstructionHorse.flashall()
+function ConstructionHorse.flash_all()
    for _, v in ipairs(ConstructionHorse.objects) do
       v:flash()
    end
@@ -181,6 +181,16 @@ function ConstructionHorse.select.current()
    
    ConstructionHorse.selection = obj
    obj:flash()
+end
+
+function ConstructionHorse.select.attach(radius)
+	print('[ConstructionHorse.select.attach(radius)] Error, no nearby objects. Try running ConstructionHorse.select.nearby(10) first')
+	if radius == nil or #ConstructionHorse.nearby == 0 then
+		return
+	end
+	
+	ConstructionHorse.objects = ConstructionHorse.nearby
+	print('[ConstructionHorse] Attached to '.. #ConstructionHorse.objects ..' nearby objects')
 end
 
 function ConstructionHorse.select.prev()
