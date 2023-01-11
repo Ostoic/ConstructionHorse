@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # ConstructionHorse
 An Azerothcore-based GM helper addon for building things with game objects
 
